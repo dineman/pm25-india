@@ -1,0 +1,22 @@
+name: pm25
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - cartopy
+  - cdsapi
+  - zarr
+  - dask
+  - ipykernel
+  - pyyaml
+  - geopandas
+  - scipy
+  - xarray
+  - pandas
+  - jupyterlab
+  - netcdf4
+  - cfgrib
+  - scikit-learn
+  - tqdm
+  - matplotlib
+prefix: /opt/homebrew/Caskroom/miniforge/base/envs/pm25
