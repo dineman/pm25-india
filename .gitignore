@@ -7,3 +7,8 @@ __pycache__/
 *.grib
 *.zarr
 .env
+Miniforge3-*.sh
+*.sh.*
+*.zip
+*.tar.gz
+*.part
