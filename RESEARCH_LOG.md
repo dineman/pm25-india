@@ -25,3 +25,12 @@
 - Whole-box training: RMSE 38.00, R2 0.718
 - Hardest blocks unchanged: 16.9N 70.1E (RMSE 87.9, mostly sea?), 22.9N 94.1E (RMSE 85.6)
 - Next: peak-weighted training (src/spatial_cv_weighted.py)
+
+## Peak-weighted training (India CV, ERA5 features, test 2024)
+- Unweighted: RMSE 36.22, R2 0.744, top10% RMSE 96.5 bias -34.7, clean-half bias +5.1
+- Weight 1+y/50: RMSE 38.61, R2 0.709, top10% RMSE 96.1 bias -27.1
+- Weight (1+y/50)^2: RMSE 46.47, R2 0.579, top10% RMSE 103.2 bias -16.9
+- Weighting reduces peak bias but not peak RMSE and hurts everything else: keep unweighted
+- Run-to-run noise from subsampling is about 0.3-0.5 RMSE
+- West coast block (3 cells near 72.8E): underpredicted all Oct-Mar (Dec obs 231 vs pred 119)
+- NE India block (24 cells): underpredicted in Mar-Apr (163 vs 103, 120 vs 72): likely fire season, no fire predictor yet
