@@ -11,6 +11,7 @@ from sklearn.ensemble import HistGradientBoostingRegressor
 rng = np.random.default_rng(42)
 y = xr.open_zarr("data/processed/eac4_pm25_2020_2024.zarr").pm25
 x = xr.open_zarr("data/processed/eac4_predictors_2020_2024.zarr")
+x = xr.merge([x, xr.open_zarr("data/processed/era5_blh_tp_2020_2024.zarr")])
 
 def es(T):
     c = T - 273.15

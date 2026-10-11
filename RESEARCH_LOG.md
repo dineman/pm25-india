@@ -11,3 +11,10 @@
 - Coordinates are not the main cause of poor spatial transfer
 - Fold 2 (RMSE 92, R2 0.32) dominated by a block near 35N 82E (RMSE 217, mean PM2.5 38.5): Tibetan Plateau / Taklamakan edge, outside India, likely dust spikes
 - Box includes non-India regions (Tibet, Pakistan, Nepal, Myanmar): evaluate on an India mask next
+
+## India spatial CV with ERA5 blh/tp (train India only, no lat/lon, test 2024)
+- Pooled RMSE 35.97 (was 37.57), R2 0.748 (was 0.725); all 5 folds improved
+- Top 10%: RMSE 95.8 (was 100.7), bias -34.2 (was -39.6): still underpredicts peaks
+- Whole-box training: RMSE 38.00, R2 0.718
+- Hardest blocks unchanged: 16.9N 70.1E (RMSE 87.9, mostly sea?), 22.9N 94.1E (RMSE 85.6)
+- Next: peak-weighted training (src/spatial_cv_weighted.py)
