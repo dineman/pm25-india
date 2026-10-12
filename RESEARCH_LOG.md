@@ -34,3 +34,10 @@
 - Run-to-run noise from subsampling is about 0.3-0.5 RMSE
 - West coast block (3 cells near 72.8E): underpredicted all Oct-Mar (Dec obs 231 vs pred 119)
 - NE India block (24 cells): underpredicted in Mar-Apr (163 vs 103, 120 vs 72): likely fire season, no fire predictor yet
+
+## Spatial context features (3x3 and 5x5 neighbourhood means/anomalies), India CV, test 2024
+- Base: RMSE 36.46, R2 0.741, top10% RMSE 96.86 bias -33.20; DJF 44.2 MAM 45.1 JJA 17.4 SON 32.0
+- + context: RMSE 36.50, R2 0.740, top10% RMSE 97.15 bias -33.52; DJF 43.9 MAM 45.6 JJA 17.3 SON 32.0
+- No gain. Tabular feature engineering is exhausted for the current 12 input fields
+- Final tabular baseline: India spatial CV, ERA5 blh/tp, no lat/lon, R2 ~0.74, RMSE ~36
+- Remaining error likely needs new information (aerosol composition, fire emissions) or a different task framing
