@@ -23,3 +23,6 @@ logs/
 
 # build artefacts
 *.egg-info/
+
+# fitted models (weights)
+*.joblib

@@ -1,0 +1,33 @@
+{
+  "ridge": {
+    "target": "raw",
+    "alpha": 0.01
+  },
+  "rf": {
+    "target": "log",
+    "n_estimators": 100,
+    "max_depth": null,
+    "min_samples_leaf": 20,
+    "max_features": 0.5,
+    "max_samples": 0.25
+  },
+  "lgbm": {
+    "target": "log",
+    "n_estimators": 1000,
+    "learning_rate": 0.1,
+    "num_leaves": 255,
+    "min_child_samples": 100,
+    "subsample": 0.7,
+    "colsample_bytree": 0.7,
+    "reg_lambda": 10.0
+  },
+  "mlp": {
+    "target": "log",
+    "hidden_layer_sizes": [
+      128,
+      64
+    ],
+    "alpha": 0.0001,
+    "learning_rate_init": 0.003
+  }
+}

@@ -48,3 +48,48 @@ def scores_by_group(
                 {**dict(zip(by or [], key)), "method": col, **scores(obs, pred)}
             )
     return pd.DataFrame(rows)
+
+
+# Groupings reported for every model (CLAUDE.md: overall, by region and season).
+GROUPINGS: dict[str, list[str] | None] = {
+    "overall": None,
+    "by_region": ["region"],
+    "by_season": ["season"],
+    "by_region_season": ["region", "season"],
+    "by_distance": ["dist_bin"],
+}
+DIST_BINS = [0, 100, 200, 300, 1000]
+
+
+def evaluation_table(
+    times: np.ndarray,
+    seasons: np.ndarray,
+    regions: np.ndarray,
+    dist_to_train_km: np.ndarray,
+    obs: np.ndarray,
+    preds: dict[str, np.ndarray],
+) -> pd.DataFrame:
+    """One row per (time, test cell) with grouping columns, ``obs`` and predictions.
+
+    Args:
+        times, seasons: Per time step, shape (time,).
+        regions, dist_to_train_km: Per test cell, shape (cell,).
+        obs: Observed PM2.5, shape (time, cell).
+        preds: Method name -> predictions, each shape (time, cell).
+    """
+    n_time, n_cell = obs.shape
+    return pd.DataFrame(
+        {
+            "time": np.repeat(times, n_cell),
+            "season": pd.Categorical(np.repeat(seasons, n_cell)),
+            "region": pd.Categorical(np.tile(regions, n_time)),
+            "dist_bin": pd.cut(np.tile(dist_to_train_km, n_time), DIST_BINS),
+            "obs": obs.ravel(),
+            **{m: p.ravel() for m, p in preds.items()},
+        }
+    )
+
+
+def all_scores(table: pd.DataFrame, methods: list[str]) -> dict[str, pd.DataFrame]:
+    """Scores of ``methods`` for every grouping in :data:`GROUPINGS`."""
+    return {name: scores_by_group(table, methods, by) for name, by in GROUPINGS.items()}

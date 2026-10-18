@@ -43,7 +43,7 @@ from pm25.exploration import (
     standardize_rows,
 )
 from pm25.logging_utils import log_run_info, setup_logging
-from pm25.metrics import scores_by_group
+from pm25.metrics import all_scores, evaluation_table
 
 logger = logging.getLogger(__name__)
 
@@ -58,7 +58,6 @@ METHODS = [
     "linreg",
     "linreg_log",
 ]
-DIST_BINS = [0, 100, 200, 300, 1000]
 INK, MUTED, GRID = "#2b2b29", "#6b6a63", "#e4e3de"
 BAR = "#2a78d6"
 SEQUENTIAL = LinearSegmentedColormap.from_list(
@@ -291,27 +290,12 @@ def main() -> None:
     n_time, n_test = shape
     region = split["region"].values[is_test]
     dist_to_train = split["dist_to_train_km"].values[is_test]
-    table = pd.DataFrame(
-        {
-            "time": np.repeat(ds["time"].values, n_test),
-            "season": pd.Categorical(np.repeat(seasons, n_test)),
-            "region": pd.Categorical(np.tile(region, n_time)),
-            "dist_bin": pd.cut(np.tile(dist_to_train, n_time), DIST_BINS),
-            "obs": pm_test.ravel(),
-            **{m: preds[m].ravel() for m in METHODS},
-        }
+    table = evaluation_table(
+        ds["time"].values, seasons, region, dist_to_train, pm_test, preds
     )
-    groupings = {
-        "overall": None,
-        "by_region": ["region"],
-        "by_season": ["season"],
-        "by_region_season": ["region", "season"],
-        "by_distance": ["dist_bin"],
-    }
-    results = {}
-    for name, by in groupings.items():
-        results[name] = scores_by_group(table, METHODS, by)
-        results[name].round(4).to_csv(args.out_dir / f"metrics_{name}.csv", index=False)
+    results = all_scores(table, METHODS)
+    for name, result in results.items():
+        result.round(4).to_csv(args.out_dir / f"metrics_{name}.csv", index=False)
     logger.info(
         "Overall test metrics:\n%s",
         results["overall"].round(3).to_string(index=False),

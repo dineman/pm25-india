@@ -47,5 +47,21 @@ Session 00e26aa7 (this one; transcript saved at session end)
 | 17:57 | **Step 06 full run** (21 s, 3.6 GB): nearest R² 0.61, IDW 0.59, kriging 0.58 (best MAE, best in 4/6 regions), linreg 0.30. **Log regression blew up** (max prediction 55,041; R² −0.93) → clip/check back-transform in step 07. | 06_baselines.md |
 | 18:00 | Docs 00, 01, 03, 04, 05, 06 updated with final numbers. | docs/steps/ |
 
-**Still open (as of 18:00):** Mumbai/Chennai cells; Kashmir boundary; nothing
-committed since 12:25. Next: step 07 (ML models) on the full data.
+| 19:44 | **Commit 17742a9 pushed**: steps 04–06 code, tests, docs, journal, results (figures/CSV/configs, 2.6 MB). `*.egg-info/` added to .gitignore. Not in git by design: data, `.nc` files, run logs (`*.log`), session transcripts (`logs/`). | git |
+| 19:44 | **Step 07 (ML models) started** on the full data. | 07_models.md |
+| 19:46 | Refactor: evaluation table and metric groupings moved to `pm25.metrics` (shared by steps 06 and 07); baselines re-run, metrics **identical**. | metrics.py |
+| 19:47 | Step 07 **pilot** (1 setting per model, CV on 2% of times, final rf/mlp on 200k rows; output to scratch, not kept): pipeline works, 200 s, 3.6 GB. Per-candidate CV time: ridge <1 s, rf 30 s, lgbm 7 s, mlp 62 s. Untuned lgbm already R² ~0.6 on test. | train_models.log |
+| 19:53 | **Step 07 main run started**: 4 models × 8 settings, CV on 5% of time steps, final rf/mlp on 2 M rows, feature set `all`. Expected ~35–45 min. | train_models.log |
+| ~19:55 | Glossary (`glossary.md`) and step 07 doc (explanations, pilot) written at the user's request for proper explanations. Note: times 19:44–19:53 corrected from earlier estimates using log timestamps. | glossary.md, 07_models.md |
+
+| 19:53–20:29 | Tuning finished: 4 models × 8 settings (ridge 4 s, rf 3 min, lgbm 6 min, mlp 27 min). Best CV RMSE: lgbm 36.7, mlp 37.9, rf 40.8, ridge 47.8. | cv_results.csv |
+| 20:29–20:32 | Final fits ridge, rf, lgbm done. | train_models.log |
+| 20:32–22:42 | **Final MLP fit crawled for 2 h+** (expected ~10 min): RAM full (Firefox ~6.5 GB), swap full (8/8 GB), 1.1 GB of the training process in swap. | — |
+| 22:41 | **Bug found: wrong "best" settings.** Joining the per-model CV tables kept each table's row numbers 0–7, so labels repeated and the best-row lookup took rows from the wrong models (e.g. lgbm got a setting with CV RMSE 40.9 instead of 36.7). Tuning scores themselves were correct. Final fits of this run therefore invalid. | 07_models.md |
+| 22:42 | Run stopped (TaskStop; a plain `kill` was blocked by the permission check). Fix: `best_settings()` in `models.py` + regression test; `ignore_index=True`; new `--cv-from` to reuse tuning results; free data copies before fitting; separate seeded RNG for final-fit row sampling. 54 tests pass. | models.py, train_models.py |
+| 22:44 | **Final fits re-run** with the correct settings (`--cv-from results/07_models/all/cv_results.csv`, no re-tuning). | train_models.log |
+
+| 22:44–22:51 | **Step 07 final fits (correct settings)**: test R² lgbm 0.59 (MAE 19.1, lowest of all methods), mlp 0.55, rf 0.47, ridge 0.31; interpolation nearest 0.61, kriging 0.58. ML beats interpolation beyond 100 km from training cells and in NW/Himalaya; interpolation wins in the NE (fires). | 07_models.md |
+| 22:52–23:07 | **Feature variants**: lgbm R² without lat/lon 0.48, brief set 0.44 → keep `all`. lat/lon help on unseen blocks (large-scale emission patterns), time features matter. | 07_models.md |
+
+**Still open (as of 23:07):** Mumbai/Chennai cells; Kashmir boundary.

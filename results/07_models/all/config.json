@@ -1,0 +1,89 @@
+{
+  "args": {
+    "data": "data/processed/eac4_india_3h.nc",
+    "split": "data/processed/splits/split_block5.nc",
+    "feature_set": "all",
+    "models": "['ridge', 'rf', 'lgbm', 'mlp']",
+    "n_iter": "8",
+    "cv_time_frac": "0.1",
+    "final_max_rows": "2000000",
+    "params_from": "None",
+    "cv_from": "results/07_models/all/cv_results.csv",
+    "baselines": "results/06_baselines/predictions_test.nc",
+    "out_dir": "None",
+    "seed": "42"
+  },
+  "features": [
+    "aod550",
+    "u10",
+    "v10",
+    "t2m",
+    "d2m",
+    "sp",
+    "lat",
+    "lon",
+    "wind_speed",
+    "rh2m",
+    "hour_sin",
+    "hour_cos",
+    "doy_sin",
+    "doy_cos"
+  ],
+  "n_train_rows": 5831784,
+  "n_test_rows": 1388520,
+  "cv_time_steps": 1461,
+  "cv_rows": 582939,
+  "models": {
+    "ridge": {
+      "params": {
+        "target": "raw",
+        "alpha": 0.01
+      },
+      "train_rows": 5831784,
+      "fit_seconds": 2.7,
+      "predict_seconds": 0.1
+    },
+    "rf": {
+      "params": {
+        "target": "log",
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_leaf": 20,
+        "max_features": 0.5,
+        "max_samples": 0.25
+      },
+      "train_rows": 2000000,
+      "fit_seconds": 83.9,
+      "predict_seconds": 2.8
+    },
+    "lgbm": {
+      "params": {
+        "target": "log",
+        "n_estimators": 1000,
+        "learning_rate": 0.1,
+        "num_leaves": 255,
+        "min_child_samples": 100,
+        "subsample": 0.7,
+        "colsample_bytree": 0.7,
+        "reg_lambda": 10.0
+      },
+      "train_rows": 5831784,
+      "fit_seconds": 101.4,
+      "predict_seconds": 24.2
+    },
+    "mlp": {
+      "params": {
+        "target": "log",
+        "hidden_layer_sizes": [
+          128,
+          64
+        ],
+        "alpha": 0.0001,
+        "learning_rate_init": 0.003
+      },
+      "train_rows": 2000000,
+      "fit_seconds": 235.2,
+      "predict_seconds": 1.0
+    }
+  }
+}
