@@ -17,3 +17,6 @@ __pycache__/
 .env
 .vscode/
 *.log
+
+# Claude Code session logs
+logs/
