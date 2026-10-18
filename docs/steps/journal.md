@@ -73,4 +73,14 @@ Session 00e26aa7 (this one; transcript saved at session end)
 
 | 23:35 | **Commit b50b243 pushed**: step 08 code, test, docs, results (`.nc` files not in git). | git |
 
-**Still open (as of 23:35):** Mumbai/Chennai cells; Kashmir boundary.
+Session 25e49b66 (**first session on the Mac**)
+
+| Time | What | Where |
+|---|---|---|
+| ~23:30 | Repo cloned to the Mac (`~/Project/pm25-india`); `data/` (raw 60 months + processed) copied over by hand from Fedora; all raw files open, processed set 14,616 × 43 × 40. | — |
+| ~23:33 | Conda env `pm25` updated from environment.yml (lightgbm, pykrige, shap, pytest, `pm25` package); 54 tests pass. | environment.yml |
+| ~23:36 | `git pull`: step 08 commits from Fedora arrived. | git |
+| 23:39 | **Decision: logging rules written into CLAUDE.md** (were only in Fedora's Claude memory), so both machines follow the same routine. | CLAUDE.md |
+| 23:39 | Not on the Mac (not in git): fitted models `*.joblib` and prediction `.nc` files from steps 07–08; copy from Fedora or re-run before step 09. | — |
+
+**Still open (as of 23:39):** Mumbai/Chennai cells; Kashmir boundary; step 07/08 model files on the Mac.

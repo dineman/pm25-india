@@ -26,3 +26,6 @@ logs/
 
 # fitted models (weights)
 *.joblib
+
+# macOS
+.DS_Store
