@@ -64,4 +64,6 @@ Session 00e26aa7 (this one; transcript saved at session end)
 | 22:44–22:51 | **Step 07 final fits (correct settings)**: test R² lgbm 0.59 (MAE 19.1, lowest of all methods), mlp 0.55, rf 0.47, ridge 0.31; interpolation nearest 0.61, kriging 0.58. ML beats interpolation beyond 100 km from training cells and in NW/Himalaya; interpolation wins in the NE (fires). | 07_models.md |
 | 22:52–23:07 | **Feature variants**: lgbm R² without lat/lon 0.48, brief set 0.44 → keep `all`. lat/lon help on unseen blocks (large-scale emission patterns), time features matter. | 07_models.md |
 
-**Still open (as of 23:07):** Mumbai/Chennai cells; Kashmir boundary.
+| 23:08 | **Commit 52e1855 pushed**: step 07 code, tests, docs, glossary, results (fitted models `*.joblib` and `.nc` predictions not in git). | git |
+
+**Still open (as of 23:08):** Mumbai/Chennai cells; Kashmir boundary.
