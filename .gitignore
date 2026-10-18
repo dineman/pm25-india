@@ -16,3 +16,4 @@ __pycache__/
 # secrets & editor
 .env
 .vscode/
+*.log
