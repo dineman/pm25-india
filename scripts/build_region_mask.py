@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import xarray as xr
 
-from pm25.logging_utils import setup_logging
+from pm25.logging_utils import log_run_info, setup_logging
 from pm25.preprocess import standardize
 from pm25.regions import build_region_mask, load_india_states
 
@@ -79,7 +79,8 @@ def plot_regions(mask: xr.Dataset, path: Path) -> None:
 def main() -> None:
     """Build, save and plot the region mask."""
     args = parse_args()
-    setup_logging()
+    setup_logging(log_file=Path("results/logs/build_region_mask.log"))
+    log_run_info(args)
 
     grid = standardize(xr.open_dataset(args.grid_file))
     mask = build_region_mask(

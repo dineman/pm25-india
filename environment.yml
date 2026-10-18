@@ -12,6 +12,9 @@ dependencies:
   - cartopy
   - matplotlib
   - scikit-learn
+  - lightgbm
+  - pykrige
+  - shap
   - jupyterlab
   - ipykernel
   - ruff
@@ -19,3 +22,4 @@ dependencies:
   - pip
   - pip:
       - cdsapi
+      - -e .  # this project (src/pm25), so scripts run without PYTHONPATH

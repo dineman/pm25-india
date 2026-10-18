@@ -16,7 +16,7 @@ from pathlib import Path
 
 import xarray as xr
 
-from pm25.logging_utils import setup_logging
+from pm25.logging_utils import log_run_info, setup_logging
 from pm25.preprocess import preprocess
 
 logger = logging.getLogger(__name__)
@@ -32,6 +32,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--out", type=Path, default=Path("data/processed/eac4_india_3h.nc")
     )
+    parser.add_argument(
+        "--pattern",
+        default="eac4_india_*.nc",
+        help="glob for raw files, e.g. 'eac4_india_202[01]-*.nc' for 2020-2021",
+    )
     return parser.parse_args()
 
 
@@ -39,8 +44,9 @@ def main() -> None:
     """Preprocess all raw months and write a single compressed netCDF file."""
     args = parse_args()
     setup_logging(log_file=Path("results/logs/preprocess_eac4.log"))
+    log_run_info(args)
 
-    files = sorted(args.raw_dir.glob("eac4_india_*.nc"))
+    files = sorted(args.raw_dir.glob(args.pattern))
     if not files:
         raise SystemExit(f"No raw files found in {args.raw_dir}")
     logger.info(

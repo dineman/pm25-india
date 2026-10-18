@@ -1,0 +1,30 @@
+{
+  "data": "data/processed/eac4_india_3h.nc",
+  "n_time_steps": 14616,
+  "n_india_cells": 494,
+  "variogram_time_steps": 2000,
+  "seed": 42,
+  "variogram": {
+    "log_pm25": {
+      "model": "exponential",
+      "range_km": 1648.0,
+      "nugget_to_sill": 0.076,
+      "block_size_cells": 22,
+      "range_beyond_fitted_lags": true
+    },
+    "residual": {
+      "model": "exponential",
+      "range_km": 1391.0,
+      "nugget_to_sill": 0.137,
+      "block_size_cells": 19,
+      "range_beyond_fitted_lags": true
+    },
+    "residual_trend": {
+      "model": "exponential",
+      "range_km": 896.8,
+      "nugget_to_sill": 0.099,
+      "block_size_cells": 12,
+      "range_beyond_fitted_lags": false
+    }
+  }
+}

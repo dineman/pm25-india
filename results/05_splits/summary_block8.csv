@@ -1,0 +1,7 @@
+region,cells_test,cells_train,blocks_test,blocks_train,test_share
+central,15,135,4,5,0.1
+himalaya,1,36,1,2,0.027
+igp,21,63,2,3,0.25
+northeast,9,34,2,2,0.209
+northwest,21,62,1,3,0.253
+south,25,72,2,3,0.258

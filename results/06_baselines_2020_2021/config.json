@@ -1,0 +1,66 @@
+{
+  "args": {
+    "data": "data/processed/eac4_india_3h_2020_2021.nc",
+    "split": "data/processed/splits/split_block5.nc",
+    "out_dir": "results/06_baselines_2020_2021",
+    "idw_k": "8",
+    "idw_power": "2.0",
+    "vgm_times": "1000",
+    "fit_max_lag_km": "1000.0",
+    "seed": "42"
+  },
+  "n_train_cells": 399,
+  "n_test_cells": 95,
+  "n_time_steps": 5848,
+  "delaunay_outside_hull": 16,
+  "kriging_variograms": {
+    "winter": {
+      "model": "exponential",
+      "nugget": 0.1027,
+      "psill": 3.3917,
+      "sill": 3.4944,
+      "range_km": 9360.8218,
+      "rmse": 0.0343
+    },
+    "pre_monsoon": {
+      "model": "exponential",
+      "nugget": 0.148,
+      "psill": 1.4578,
+      "sill": 1.6057,
+      "range_km": 3323.0211,
+      "rmse": 0.0375
+    },
+    "monsoon": {
+      "model": "exponential",
+      "nugget": 0.0747,
+      "psill": 3.5089,
+      "sill": 3.5836,
+      "range_km": 9360.8218,
+      "rmse": 0.0238
+    },
+    "post_monsoon": {
+      "model": "exponential",
+      "nugget": 0.0576,
+      "psill": 3.4791,
+      "sill": 3.5367,
+      "range_km": 9360.8218,
+      "rmse": 0.0332
+    }
+  },
+  "linreg_features": [
+    "aod550",
+    "u10",
+    "v10",
+    "wind_speed",
+    "t2m",
+    "d2m",
+    "rh2m",
+    "sp",
+    "hour_sin",
+    "hour_cos",
+    "doy_sin",
+    "doy_cos",
+    "lat",
+    "lon"
+  ]
+}

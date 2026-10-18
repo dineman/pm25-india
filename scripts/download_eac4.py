@@ -13,7 +13,7 @@ from pathlib import Path
 import cdsapi
 
 from pm25.download import download_month, iter_months
-from pm25.logging_utils import setup_logging
+from pm25.logging_utils import log_run_info, setup_logging
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +33,7 @@ def main() -> None:
     """Download every month in the requested range, logging failures."""
     args = parse_args()
     setup_logging(log_file=Path("results/logs/download_eac4.log"))
+    log_run_info(args)
     # The ADS client adds its own console handler to a logger that has none,
     # which prints every status message twice; a NullHandler prevents that.
     logging.getLogger("ecmwf.datastores.legacy_client").addHandler(
