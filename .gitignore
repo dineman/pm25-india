@@ -1,0 +1,18 @@
+# data & outputs (too big for git)
+data/
+*.nc
+*.grib
+*.zarr
+results/*.pt
+results/*.pth
+
+# python junk
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+
+# secrets & editor
+.env
+.vscode/

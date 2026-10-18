@@ -1,0 +1,21 @@
+name: pm25
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - xarray
+  - netcdf4
+  - dask
+  - xesmf
+  - cartopy
+  - matplotlib
+  - scikit-learn
+  - jupyterlab
+  - ipykernel
+  - ruff
+  - pytest
+  - pip
+  - pip:
+      - cdsapi
