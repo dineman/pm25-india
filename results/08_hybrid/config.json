@@ -1,0 +1,83 @@
+{
+  "args": {
+    "data": "data/processed/eac4_india_3h.nc",
+    "split": "data/processed/splits/split_block5.nc",
+    "models_dir": "results/07_models/all",
+    "model": "lgbm",
+    "baselines": "results/06_baselines/predictions_test.nc",
+    "out_dir": "results/08_hybrid",
+    "vgm_times": "1000",
+    "fit_max_lag_km": "1000.0",
+    "idw_k": "8",
+    "idw_power": "2.0",
+    "seed": "42"
+  },
+  "model": "lgbm",
+  "params": {
+    "target": "log",
+    "n_estimators": 1000,
+    "learning_rate": 0.1,
+    "num_leaves": 255,
+    "min_child_samples": 100,
+    "subsample": 0.7,
+    "colsample_bytree": 0.7,
+    "reg_lambda": 10.0
+  },
+  "features": [
+    "aod550",
+    "u10",
+    "v10",
+    "t2m",
+    "d2m",
+    "sp",
+    "lat",
+    "lon",
+    "wind_speed",
+    "rh2m",
+    "hour_sin",
+    "hour_cos",
+    "doy_sin",
+    "doy_cos"
+  ],
+  "oof_train_scores": {
+    "rmse": 41.8624,
+    "mae": 19.3657,
+    "r2": 0.6638,
+    "bias": -6.3258,
+    "n": 5831784
+  },
+  "residual_variograms": {
+    "winter": {
+      "model": "exponential",
+      "nugget": 0.0,
+      "psill": 0.9625,
+      "sill": 0.9625,
+      "range_km": 483.4216,
+      "rmse": 0.0377
+    },
+    "pre_monsoon": {
+      "model": "exponential",
+      "nugget": 0.2165,
+      "psill": 0.7117,
+      "sill": 0.9282,
+      "range_km": 529.2484,
+      "rmse": 0.0361
+    },
+    "monsoon": {
+      "model": "exponential",
+      "nugget": 0.0,
+      "psill": 1.0129,
+      "sill": 1.0129,
+      "range_km": 487.6898,
+      "rmse": 0.0701
+    },
+    "post_monsoon": {
+      "model": "exponential",
+      "nugget": 0.0,
+      "psill": 1.0067,
+      "sill": 1.0067,
+      "range_km": 493.2327,
+      "rmse": 0.0392
+    }
+  }
+}

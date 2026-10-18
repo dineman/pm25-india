@@ -66,4 +66,9 @@ Session 00e26aa7 (this one; transcript saved at session end)
 
 | 23:08 | **Commit 52e1855 pushed**: step 07 code, tests, docs, glossary, results (fitted models `*.joblib` and `.nc` predictions not in git). | git |
 
-**Still open (as of 23:08):** Mumbai/Chennai cells; Kashmir boundary.
+| 23:23 | Commit 99d5041 pushed (journal line). | git |
+| 23:25 | **Step 08 (regression kriging) started**: out-of-fold LightGBM residuals at training cells (5 fold fits), kriged to test cells and added to the step 07 prediction. | 08_hybrid.md |
+
+| 23:25–23:34 | **Step 08 done**: out-of-fold LightGBM R² 0.66 on training cells; residual variogram range ~490 km (reaches a sill). **Hybrid test R² 0.72 (kriged residuals) / 0.73 (IDW)** vs 0.59 ML only and 0.58–0.61 interpolation only; bias −7.9 → −1.4; best at every distance and in every season. | 08_hybrid.md |
+
+**Still open (as of 23:34):** Mumbai/Chennai cells; Kashmir boundary.

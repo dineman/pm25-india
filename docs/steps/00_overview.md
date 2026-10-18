@@ -35,7 +35,7 @@ flowchart LR
 | 05 | Spatial block splits | **Done**: 5×5 main, 8×8 sensitivity; rerun if mask changes | [05_splits.md](05_splits.md) | RQ5 |
 | 06 | Baselines (nearest, IDW, Delaunay-linear, kriging, linear) | **Done** on 2020–2024 | [06_baselines.md](06_baselines.md) | RQ6, reference for RQ1–2 |
 | 07 | ML models (ridge, RF, LightGBM, MLP) | **Done**: LightGBM best (test R² 0.59) | [07_models.md](07_models.md) | RQ1, RQ2, RQ5 |
-| 08 | Hybrid ML + residual kriging | Not started | | RQ6 |
+| 08 | Hybrid ML + residual kriging | **Done**: test R² 0.72 (vs 0.59 ML, 0.58 kriging) | [08_hybrid.md](08_hybrid.md) | RQ6 |
 | 09 | Evaluation (overall, region, season, hour) | Not started | | RQ1, RQ2, RQ4, RQ5, RQ6 |
 | 10 | Feature importance | Not started | | RQ3 |
 | 11 | Maps | Not started | | RQ6 |
