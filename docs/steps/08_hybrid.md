@@ -3,6 +3,8 @@
 **Status:** **done** 2026-10-18 23:25–23:34 (9 min: out-of-fold fits 9 min,
 everything else seconds). Terms in *italics* are explained in [glossary.md](glossary.md).
 
+> **Re-run on the Mac, 2026-10-19 (step 09 uses these numbers):** Re-run with the IDW tie fix: lgbm_rk RMSE 46.00 → **45.94** (R² 0.715 → 0.716), lgbm_idw 44.98 → **45.00**; out-of-fold R² 0.664 → 0.663. **Step 09's CV check (27 blocks) shows the gain is much smaller over many places (R² 0.66 → 0.68) than on these 6 test blocks; see [09_evaluation.md](09_evaluation.md).**
+
 ## Purpose
 
 Step 07 found that ML (LightGBM) and interpolation (kriging) are good at

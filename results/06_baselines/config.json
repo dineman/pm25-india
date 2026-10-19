@@ -27,7 +27,7 @@
       "nugget": 0.1463,
       "psill": 1.6013,
       "sill": 1.7475,
-      "range_km": 3855.6498,
+      "range_km": 3855.6507,
       "rmse": 0.0374
     },
     "monsoon": {
@@ -35,7 +35,7 @@
       "nugget": 0.0803,
       "psill": 3.0686,
       "sill": 3.1489,
-      "range_km": 8256.3944,
+      "range_km": 8256.3981,
       "rmse": 0.0244
     },
     "post_monsoon": {

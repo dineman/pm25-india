@@ -29,3 +29,6 @@ logs/
 
 # macOS
 .DS_Store
+
+# Google Drive sync temp files
+.tmp.driveupload/

@@ -29,14 +29,14 @@ flowchart LR
 | # | Step | Status | Doc | Research questions |
 |---|------|--------|-----|--------------------|
 | 01 | Download EAC4 | **Done** (60/60 months, 17:55 on 2026-10-18) | [01_download.md](01_download.md) | prerequisite |
-| 02 | India mask and regions | Done, **open issue: Mumbai/Chennai cells excluded** | [02_region_mask.md](02_region_mask.md) | RQ4 |
+| 02 | India mask and regions | Done; Mumbai/Chennai cells stay excluded (user, 2026-10-19); **Kashmir boundary to change** (see decisions) | [02_region_mask.md](02_region_mask.md) | RQ4 |
 | 03 | Preprocessing | **Done** on 2020–2024 (14,616 steps, 632 MB) | [03_preprocessing.md](03_preprocessing.md) | RQ1, RQ3, RQ4 |
 | 04 | Exploration, variogram | **Done** on 2020–2024 | [04_exploration.md](04_exploration.md) | RQ4, RQ5, RQ6 |
 | 05 | Spatial block splits | **Done**: 5×5 main, 8×8 sensitivity; rerun if mask changes | [05_splits.md](05_splits.md) | RQ5 |
 | 06 | Baselines (nearest, IDW, Delaunay-linear, kriging, linear) | **Done** on 2020–2024 | [06_baselines.md](06_baselines.md) | RQ6, reference for RQ1–2 |
-| 07 | ML models (ridge, RF, LightGBM, MLP) | **Done**: LightGBM best (test R² 0.59) | [07_models.md](07_models.md) | RQ1, RQ2, RQ5 |
+| 07 | ML models (ridge, RF, LightGBM, MLP) | **Done**: LightGBM best (test R² 0.59; MLP 0.53 on the Mac re-run) | [07_models.md](07_models.md) | RQ1, RQ2, RQ5 |
 | 08 | Hybrid ML + residual kriging | **Done**: test R² 0.72 (vs 0.59 ML, 0.58 kriging) | [08_hybrid.md](08_hybrid.md) | RQ6 |
-| 09 | Evaluation (overall, region, season, hour) | Not started | | RQ1, RQ2, RQ4, RQ5, RQ6 |
+| 09 | Evaluation (overall, region, season, hour) | **Done** (Mac): CV check on 27 blocks: hybrid R² 0.68, LightGBM 0.66, kriging 0.66; the big test gain (0.59 → 0.72) comes mostly from 2 of 6 blocks | [09_evaluation.md](09_evaluation.md) | RQ1, RQ2, RQ4, RQ5, RQ6 |
 | 10 | Feature importance | Not started | | RQ3 |
 | 11 | Maps | Not started | | RQ6 |
 | 12 | Write-up | Not started | | all |
@@ -57,6 +57,9 @@ flowchart LR
 | 2026-10-18 | Native **3-hourly** data (8 steps/day), not 6-hourly or daily | Keeps the full diurnal cycle (incl. ~20:30 IST evening peak). Memory is tight (15 GB RAM, often ~4 GB free): subsample rows/time steps for heavy models instead of coarsening. |
 | 2026-10-18 | Domain = India land cells (≥50% of cell inside India) | Project is about India; sea and neighbouring countries have different sources. See step 02 open issue. |
 | 2026-10-18 | Boundaries = Natural Earth 10 m admin-1 | Free, has all 36 states/UTs; note it uses the de facto line of control in Kashmir, not India's official boundary. |
+| 2026-10-19 | **Kashmir: use India's official boundary** (user) | Required for the project. Open: maps only (step 11), or also the region mask (re-run steps 02–09). |
+| 2026-10-19 | Mumbai/Chennai cells stay excluded (user) | Keep the 50% land rule; mention in the write-up. |
+| 2026-10-19 | Mac re-run of steps 06–09 gives the reference numbers | Prediction files aren't in git; IDW tie fix; MLP differs slightly between machines (step 09 doc). |
 | 2026-10-18 | 6 regions: igp, northwest, central, south, northeast, himalaya | Groups states with similar pollution climate; needed for RQ4. |
 | 2026-10-18 | IMD seasons: winter Jan–Feb, pre-monsoon Mar–May, monsoon Jun–Sep, post-monsoon Oct–Dec | Official India Meteorological Department definition. (The first plan said DJF; corrected.) |
 | 2026-10-18 | Spatial split by blocks, not random cells | Neighbouring cells are strongly correlated; random hold-out inflates scores (CLAUDE.md rule). Block size set in step 04 from the variogram. |

@@ -1,0 +1,74 @@
+{
+  "args": {
+    "data": "data/processed/eac4_india_3h.nc",
+    "split": "data/processed/splits/split_block5.nc",
+    "baselines": "results/06_baselines/predictions_test.nc",
+    "models_dir": "results/07_models/all",
+    "hybrid_dir": "results/08_hybrid",
+    "model": "lgbm",
+    "out_dir": "results/09_evaluation",
+    "n_boot": "2000",
+    "vgm_times": "1000",
+    "fit_max_lag_km": "1000.0",
+    "idw_k": "8",
+    "idw_power": "2.0",
+    "skip_cv": "False",
+    "seed": "42"
+  },
+  "test_methods": [
+    "nearest",
+    "idw",
+    "linear_delaunay",
+    "kriging",
+    "linreg",
+    "ridge",
+    "rf",
+    "mlp",
+    "lgbm",
+    "lgbm_idw",
+    "lgbm_rk"
+  ],
+  "cv_methods": [
+    "nearest",
+    "idw",
+    "kriging",
+    "lgbm",
+    "lgbm_idw",
+    "lgbm_rk"
+  ],
+  "pairs": [
+    [
+      "lgbm_rk",
+      "lgbm"
+    ],
+    [
+      "lgbm_rk",
+      "kriging"
+    ],
+    [
+      "lgbm_rk",
+      "nearest"
+    ],
+    [
+      "lgbm_rk",
+      "lgbm_idw"
+    ],
+    [
+      "lgbm",
+      "kriging"
+    ],
+    [
+      "lgbm",
+      "nearest"
+    ],
+    [
+      "lgbm",
+      "mlp"
+    ],
+    [
+      "lgbm",
+      "rf"
+    ]
+  ],
+  "n_test_blocks": 6
+}

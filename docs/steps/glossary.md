@@ -90,6 +90,25 @@ topic; the step where a term first matters is in brackets.
   worse than the mean.
 - **Bias** (06): mean(prediction − observation). Negative = predicts too low on
   average.
+- **Bootstrap** (09): estimate how much a result could vary by re-drawing the
+  data *with replacement* many times and recomputing it each time.
+- **Block bootstrap** (09): bootstrap that re-draws whole spatial blocks, not
+  single rows, because neighbouring cells are not independent.
+- **95% range (percentile interval)** (09): the middle 95% of the bootstrap
+  results; a rough "plausible range" for the score.
+- **Paired comparison** (09): comparing two methods on exactly the same
+  re-drawn blocks, so the difference isn't blurred by which blocks were drawn.
+- **Nested CV** (09): CV inside CV. Used when a method itself needs out-of-fold
+  values (the hybrid's residuals), so that the fold being scored is never seen
+  by any model involved in predicting it.
+- **AQI categories** (09): India's National Air Quality Index bands for PM2.5
+  (good < 30, satisfactory 30–60, moderate 60–90, poor 90–120, very poor
+  120–250, severe ≥ 250 µg m⁻³, defined on 24 h means).
+- **IST** (09): Indian Standard Time = UTC + 5:30. The CAMS time steps 00, 03, …,
+  21 UTC are 05:30, 08:30, …, 02:30 IST.
+- **Boundary layer** (09): the lowest part of the atmosphere, mixed by the
+  ground's heating. Deep in the afternoon (pollution spread out), shallow at
+  night (pollution trapped near the ground).
 
 ## Interpolation (baselines)
 

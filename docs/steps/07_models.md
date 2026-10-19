@@ -4,6 +4,8 @@
 after a bug fix, see "Problems met"); feature-set variants done 22:52–23:07. Terms in *italics* are explained in
 [glossary.md](glossary.md).
 
+> **Re-run on the Mac, 2026-10-19 (step 09 uses these numbers):** Final fits re-run with `--cv-from` (same settings). Ridge and RF identical; LightGBM RMSE 54.97 → **54.95**; **MLP R² 0.545 → 0.528** (RMSE 58.1 → 59.2): neural-network training isn't bit-reproducible across machines. Rankings unchanged. The `brief`/`all_no_latlon` variants were not re-run.
+
 ## Purpose
 
 Answer RQ1 ("how accurately can PM2.5 be estimated from CAMS atmospheric and

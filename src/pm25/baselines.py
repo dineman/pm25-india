@@ -35,10 +35,12 @@ def idw_weights(dist: np.ndarray, k: int = 8, power: float = 2.0) -> np.ndarray:
     """Inverse-distance weights over the ``k`` nearest training cells.
 
     Weight of training cell j for test cell i is d_ij^-power, normalised to
-    sum to 1 over the k nearest cells; all other weights are 0.
+    sum to 1 over the k nearest cells; all other weights are 0. Ties at the
+    k-th distance (common on a regular grid) go to the lower cell index; a
+    stable sort makes this the same on every machine.
     """
     k = min(k, dist.shape[1])
-    nearest = np.argsort(dist, axis=1)[:, :k]
+    nearest = np.argsort(dist, axis=1, kind="stable")[:, :k]
     rows = np.arange(dist.shape[0])[:, None]
     inv = 1.0 / np.maximum(dist[rows, nearest], 1e-6) ** power
     w = np.zeros_like(dist)

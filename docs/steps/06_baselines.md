@@ -5,6 +5,8 @@
 its results were within ~4 µg m⁻³ RMSE except the log model (see below). Split:
 5 × 5 blocks (step 05), 399 training cells, 95 test cells.
 
+> **Re-run on the Mac, 2026-10-19 (step 09 uses these numbers):** IDW test RMSE 55.31 → **55.14** (R² 0.588 → 0.590) after the neighbour-tie fix (`idw_weights` now uses a stable sort; 23 of 95 test cells had a tie at the 8th neighbour, broken differently on each machine). All other baselines identical.
+
 ## Purpose
 
 Every ML model must beat simple methods to be worth anything (CLAUDE.md rule).

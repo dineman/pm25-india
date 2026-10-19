@@ -40,8 +40,8 @@
         "alpha": 0.01
       },
       "train_rows": 5831784,
-      "fit_seconds": 2.7,
-      "predict_seconds": 0.1
+      "fit_seconds": 0.6,
+      "predict_seconds": 0.0
     },
     "rf": {
       "params": {
@@ -53,8 +53,8 @@
         "max_samples": 0.25
       },
       "train_rows": 2000000,
-      "fit_seconds": 83.9,
-      "predict_seconds": 2.8
+      "fit_seconds": 35.4,
+      "predict_seconds": 1.5
     },
     "lgbm": {
       "params": {
@@ -68,8 +68,8 @@
         "reg_lambda": 10.0
       },
       "train_rows": 5831784,
-      "fit_seconds": 101.4,
-      "predict_seconds": 24.2
+      "fit_seconds": 72.6,
+      "predict_seconds": 10.4
     },
     "mlp": {
       "params": {
@@ -82,8 +82,8 @@
         "learning_rate_init": 0.003
       },
       "train_rows": 2000000,
-      "fit_seconds": 235.2,
-      "predict_seconds": 1.0
+      "fit_seconds": 96.0,
+      "predict_seconds": 0.4
     }
   }
 }

@@ -89,3 +89,10 @@ def test_apply_weights_shapes() -> None:
     out = apply_weights(w, values)
     assert out.shape == (2, 2)
     assert np.allclose(out, [[2.0, 5.0], [2.0, 2.0]])
+
+
+def test_idw_ties_go_to_lower_index() -> None:
+    # Four training cells at the same distance, k = 2: the first two are used.
+    dist = np.full((1, 4), 100.0)
+    w = idw_weights(dist, k=2)
+    assert np.allclose(w, [[0.5, 0.5, 0.0, 0.0]])

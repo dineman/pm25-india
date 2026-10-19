@@ -73,14 +73,24 @@ Session 00e26aa7 (this one; transcript saved at session end)
 
 | 23:35 | **Commit b50b243 pushed**: step 08 code, test, docs, results (`.nc` files not in git). | git |
 
-Session 25e49b66 (**first session on the Mac**)
+Session 25e49b66 (**first session on the Mac**; 2026-10-18 evening to 2026-10-19 morning)
 
 | Time | What | Where |
 |---|---|---|
 | ~23:30 | Repo cloned to the Mac (`~/Project/pm25-india`); `data/` (raw 60 months + processed) copied over by hand from Fedora; all raw files open, processed set 14,616 × 43 × 40. | — |
 | ~23:33 | Conda env `pm25` updated from environment.yml (lightgbm, pykrige, shap, pytest, `pm25` package); 54 tests pass. | environment.yml |
 | ~23:36 | `git pull`: step 08 commits from Fedora arrived. | git |
-| 23:39 | **Decision: logging rules written into CLAUDE.md** (were only in Fedora's Claude memory), so both machines follow the same routine. | CLAUDE.md |
-| 23:39 | Not on the Mac (not in git): fitted models `*.joblib` and prediction `.nc` files from steps 07–08; copy from Fedora or re-run before step 09. | — |
+| 23:39 | **Decision: logging rules written into CLAUDE.md** (were only in Fedora's Claude memory), so both machines follow the same routine. Commit 7196e7c pushed. | CLAUDE.md |
+| 23:39 | Not on the Mac (not in git): fitted models `*.joblib` and prediction `.nc` files of steps 06–08, needed by step 09. | — |
+| 23:40–23:45 | **Rebuild on the Mac**: step 06 in 11 s, step 07 final fits (`--cv-from`, no re-tuning) in 4 min (lgbm 68 s vs 101 s on Fedora), step 08. Compared with the committed Fedora metrics: ridge, rf, nearest, kriging, linreg **identical**; lgbm RMSE 54.97 → 54.95; **MLP R² 0.545 → 0.528** (neural-net training isn't bit-reproducible across machines); **IDW 55.31 → 55.16 although IDW has no randomness**. | run_baselines.log, train_models.log, run_hybrid.log |
+| ~23:45 | **Step 09 (evaluation) started.** Found: the 95 test cells form only **6 blocks**, most regions = 1 block (south 1, northwest 1, central 1, northeast 2 incl. a 1-cell block, IGP + Himalaya share 1). | 09_evaluation.md |
+| ~23:45 | **Decision (user): step 09 = core + CV check.** Core: all methods in one table, new breakdowns by hour (IST), pollution level, year; block bootstrap for error bars. CV check: the same comparison on the 399 training cells with the 5 block folds (27 blocks). 8 × 8 split not repeated. | 09_evaluation.md |
+| 23:50 | **Bug found: IDW neighbour ties.** For 23 of 95 test cells the 8th and 9th nearest training cells are at exactly the same distance (regular grid); `np.argsort` broke the tie differently on the two machines. Fix: stable sort (ties → lower cell index), test added; 64 tests pass. | baselines.py |
+| 23:51–23:55 | Steps 06, 07, 08 re-run on the Mac with the IDW fix, so all step 09 tables use the same predictions. IDW test RMSE 55.14, lgbm_rk 45.94, lgbm_idw 45.00. | logs |
+| 23:56 | **Step 09** test part done; nested CV fits started (20 LightGBM fits, ~70 s each). | evaluate.log |
+| ~00:15 | **Decisions (user):** Mumbai/Chennai cells stay excluded (keep 50% land rule); Kashmir must follow **India's official boundary**; the "no truth below 0.75°" limitation is accepted (CAMS is the only data available). | 00_overview.md |
+| 00:14–07:32 | Step 09 slowed to a crawl: the Mac (on battery) slept most of the night; `caffeinate` (started 01:15) doesn't prevent sleep on battery with the lid closed. The 20 nested fits were done at 07:32. Lesson: run long jobs on mains power. | evaluate.log |
+| 07:32 | **Step 09 done.** CV check (27 blocks): RMSE hybrid 41.1, LightGBM 41.9, kriging 42.0, nearest 47.8; R² 0.68 / 0.66 / 0.66 / 0.56. **The hybrid's large test gain (R² 0.59 → 0.72) comes mostly from 2 of 6 test blocks** (northeast 38, IGP 50); over 27 blocks it helps in 15, hurts in 12. Robust: ML ≫ interpolation in the Himalaya; hybrid removes LightGBM's low bias (−6.3 → −0.4) and halves under-prediction of severe pollution; kriged residuals beat IDW residuals. Errors highest at night, lowest ~14:30 IST. | 09_evaluation.md |
+| ~07:45 | Docs: 09_evaluation.md written; glossary (bootstrap, nested CV, AQI, IST, boundary layer); overview status and decisions; re-run notes added to 06, 07, 08 docs. `.tmp.driveupload/` (Google Drive sync files in results/) added to .gitignore. | docs/steps/ |
 
-**Still open (as of 23:39):** Mumbai/Chennai cells; Kashmir boundary; step 07/08 model files on the Mac.
+**Still open (as of 07:45):** Kashmir boundary scope (maps only, or also the region mask); step 07 feature-set variants not re-run on the Mac.

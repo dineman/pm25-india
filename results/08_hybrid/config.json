@@ -40,44 +40,44 @@
     "doy_cos"
   ],
   "oof_train_scores": {
-    "rmse": 41.8624,
-    "mae": 19.3657,
-    "r2": 0.6638,
-    "bias": -6.3258,
+    "rmse": 41.886,
+    "mae": 19.3936,
+    "r2": 0.6634,
+    "bias": -6.3255,
     "n": 5831784
   },
   "residual_variograms": {
     "winter": {
       "model": "exponential",
       "nugget": 0.0,
-      "psill": 0.9625,
-      "sill": 0.9625,
-      "range_km": 483.4216,
-      "rmse": 0.0377
+      "psill": 0.9629,
+      "sill": 0.9629,
+      "range_km": 480.8654,
+      "rmse": 0.0378
     },
     "pre_monsoon": {
       "model": "exponential",
-      "nugget": 0.2165,
-      "psill": 0.7117,
-      "sill": 0.9282,
-      "range_km": 529.2484,
-      "rmse": 0.0361
+      "nugget": 0.2108,
+      "psill": 0.7175,
+      "sill": 0.9283,
+      "range_km": 523.7984,
+      "rmse": 0.0366
     },
     "monsoon": {
       "model": "exponential",
       "nugget": 0.0,
-      "psill": 1.0129,
-      "sill": 1.0129,
-      "range_km": 487.6898,
-      "rmse": 0.0701
+      "psill": 1.0132,
+      "sill": 1.0132,
+      "range_km": 487.2095,
+      "rmse": 0.0699
     },
     "post_monsoon": {
       "model": "exponential",
       "nugget": 0.0,
-      "psill": 1.0067,
-      "sill": 1.0067,
-      "range_km": 493.2327,
-      "rmse": 0.0392
+      "psill": 1.0059,
+      "sill": 1.0059,
+      "range_km": 489.0273,
+      "rmse": 0.0396
     }
   }
 }
