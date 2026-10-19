@@ -111,5 +111,6 @@ Session 25e49b66 (**first session on the Mac**; 2026-10-18 evening to 2026-10-19
 | ~08:40 | **Step 12 (write-up) started** (user: "continue"). Format chosen: Markdown report in the repo (`docs/report.md`), convertible with pandoc; no format requested. | — |
 | ~08:45 | `scripts/report_figures.py`: final figures rebuilt from saved results in ~10 s (no model runs). Fixes the two open figure issues: SHAP heatmap text colour now by position on the colour scale (also fixed in `feature_importance.py` for future runs); maps hatch the **345 of 4,636** fine points inside the official boundary but outside the model domain (PoK, Aksai Chin, excluded coasts). `make_maps.py`: `plot_panels(hatch=...)`, `neighbour_outlines()` (no change to results). | report_figures.log |
 | 08:52 | **`docs/report.md` written**: summary, objective/RQs, data, methods, results per RQ (tables + 12 figures), limitations, conclusions, reproduction table. Numbers taken from the step docs; run commands checked against each step's "How to run". | report.md |
+| 08:52 | **Commit 1dda1ab pushed**: report, report figures script and figures, plotting fixes. | git |
 
 **Still open (as of 08:52):** step 07 feature-set variants not re-run on the Mac (report uses only the `all` set plus the Fedora variant R² for lat/lon); report format for submission (Markdown now; PDF/Word via pandoc if needed).
