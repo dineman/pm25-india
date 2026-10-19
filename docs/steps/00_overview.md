@@ -81,3 +81,4 @@ flowchart LR
 - `scripts/export_session.py` + SessionEnd hook (`.claude/settings.json`): every
   Claude Code session is archived to `logs/sessions/` as raw `.jsonl` + readable `.md`.
 - `src/pm25/logging_utils.py`: `setup_logging()` and `log_run_info()` used by all scripts.
+- **Beginner's booklet**: chapters in `docs/booklet/`, built by `bash docs/booklet/build.sh` into `results/12_report/pm25_india_booklet.pdf` (whole project in plain language, every Python file explained).
