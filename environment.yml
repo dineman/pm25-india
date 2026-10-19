@@ -19,6 +19,8 @@ dependencies:
   - ipykernel
   - ruff
   - pytest
+  - pandoc  # report conversion (step 12)
+  - typst  # PDF engine for pandoc, much lighter than LaTeX
   - pip
   - pip:
       - cdsapi

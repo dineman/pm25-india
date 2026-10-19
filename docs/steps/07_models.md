@@ -4,7 +4,7 @@
 after a bug fix, see "Problems met"); feature-set variants done 22:52–23:07. Terms in *italics* are explained in
 [glossary.md](glossary.md).
 
-> **Re-run on the Mac, 2026-10-19 (step 09 uses these numbers):** Final fits re-run with `--cv-from` (same settings). Ridge and RF identical; LightGBM RMSE 54.97 → **54.95**; **MLP R² 0.545 → 0.528** (RMSE 58.1 → 59.2): neural-network training isn't bit-reproducible across machines. Rankings unchanged. The `brief`/`all_no_latlon` variants were not re-run.
+> **Re-run on the Mac, 2026-10-19 (step 09 uses these numbers):** Final fits re-run with `--cv-from` (same settings). Ridge and RF identical; LightGBM RMSE 54.97 → **54.95**; **MLP R² 0.545 → 0.528** (RMSE 58.1 → 59.2): neural-network training isn't bit-reproducible across machines. Rankings unchanged. The `brief`/`all_no_latlon` variants were re-run too (09:01–09:05): LightGBM, RF and ridge match Fedora to 2 decimals; MLP R² brief 0.446 → 0.460, without lat/lon 0.403 → 0.405. The variant table below shows the Mac numbers.
 
 ## Purpose
 
@@ -278,9 +278,9 @@ settings tuned on `all` (`--cv-from results/07_models/all/cv_results.csv`).
 
 | features | n | lgbm R² | lgbm RMSE | lgbm MAE | mlp R² | rf R² | ridge R² |
 |---|---|---|---|---|---|---|---|
-| **all** (brief + derived) | 14 | **0.59** | **55.0** | **19.1** | 0.54 | 0.47 | 0.31 |
-| all without lat/lon | 12 | 0.48 | 62.4 | 23.5 | 0.40 | 0.39 | 0.31 |
-| brief (aod, u10, v10, t2m, d2m, sp, lat, lon) | 8 | 0.44 | 64.6 | 23.7 | 0.45 | 0.41 | 0.29 |
+| **all** (brief + derived) | 14 | **0.59** | **55.0** | **19.1** | 0.53 | 0.47 | 0.31 |
+| all without lat/lon | 12 | 0.48 | 62.4 | 23.5 | 0.41 | 0.39 | 0.31 |
+| brief (aod, u10, v10, t2m, d2m, sp, lat, lon) | 8 | 0.44 | 64.6 | 23.7 | 0.46 | 0.41 | 0.29 |
 
 LightGBM RMSE by region:
 
@@ -307,7 +307,7 @@ LightGBM RMSE by distance to training: all 54.8 / 51.5 / 68.1; without lat/lon
   the brief's predictors alone; plus RH and wind speed.
 - Ridge barely changes (0.29–0.31): a straight line can't use these features well.
 - The ranking LightGBM > MLP > RF > ridge holds for `all` and `all_no_latlon`; with
-  `brief`, MLP ≈ LightGBM.
+  `brief`, the MLP is slightly ahead (R² 0.46 vs 0.44).
 - **Main feature set for later steps: `all`.**
 
 ## Open issues
