@@ -1,0 +1,8 @@
+,winter,pre_monsoon,monsoon,post_monsoon
+aerosol (aod550),0.3785,0.3228,0.3453,0.3805
+"wind (u10, v10, speed)",0.0734,0.0725,0.0844,0.0724
+"temperature & humidity (t2m, d2m, rh2m)",0.1772,0.0975,0.1613,0.1628
+surface pressure (sp),0.1831,0.1422,0.1273,0.1805
+"location (lat, lon)",0.174,0.1757,0.1647,0.1743
+"hour of day (hour_sin, hour_cos)",0.2336,0.249,0.1755,0.2239
+"day of year (doy_sin, doy_cos)",0.2005,0.1169,0.1853,0.1894

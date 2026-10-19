@@ -1,0 +1,36 @@
+name,repeat,rmse,mae,d_rmse,d_mae
+aerosol (aod550),0,66.6891,31.4579,11.3901,12.4452
+aerosol (aod550),1,66.5225,31.462,11.2235,12.4493
+aerosol (aod550),2,66.7295,31.4602,11.4305,12.4475
+aerosol (aod550),3,66.8281,31.4829,11.5291,12.4702
+aerosol (aod550),4,66.5644,31.447,11.2654,12.4343
+"wind (u10, v10, speed)",0,60.9297,23.065,5.6307,4.0523
+"wind (u10, v10, speed)",1,60.8013,23.0562,5.5023,4.0435
+"wind (u10, v10, speed)",2,60.826,23.0307,5.527,4.018
+"wind (u10, v10, speed)",3,60.7574,23.058,5.4584,4.0453
+"wind (u10, v10, speed)",4,60.7309,23.0659,5.4319,4.0532
+"temperature & humidity (t2m, d2m, rh2m)",0,62.7563,25.3423,7.4573,6.3296
+"temperature & humidity (t2m, d2m, rh2m)",1,62.8119,25.3453,7.5129,6.3326
+"temperature & humidity (t2m, d2m, rh2m)",2,62.827,25.3201,7.528,6.3074
+"temperature & humidity (t2m, d2m, rh2m)",3,62.8624,25.354,7.5634,6.3413
+"temperature & humidity (t2m, d2m, rh2m)",4,62.8757,25.356,7.5767,6.3433
+surface pressure (sp),0,65.6042,27.5721,10.3052,8.5594
+surface pressure (sp),1,65.5159,27.5284,10.2169,8.5157
+surface pressure (sp),2,65.4554,27.5218,10.1564,8.5091
+surface pressure (sp),3,65.2848,27.5288,9.9858,8.5161
+surface pressure (sp),4,65.455,27.5272,10.156,8.5145
+"location (lat, lon)",0,74.0976,32.2883,18.7986,13.2756
+"location (lat, lon)",1,74.3724,32.3338,19.0734,13.3211
+"location (lat, lon)",2,74.224,32.2268,18.925,13.2141
+"location (lat, lon)",3,74.0144,32.2517,18.7154,13.239
+"location (lat, lon)",4,73.995,32.3279,18.696,13.3152
+"hour of day (hour_sin, hour_cos)",0,69.5934,29.5852,14.2944,10.5725
+"hour of day (hour_sin, hour_cos)",1,69.1621,29.6153,13.8631,10.6026
+"hour of day (hour_sin, hour_cos)",2,69.0165,29.6099,13.7175,10.5972
+"hour of day (hour_sin, hour_cos)",3,69.0032,29.5992,13.7042,10.5865
+"hour of day (hour_sin, hour_cos)",4,69.0984,29.6097,13.7994,10.597
+"day of year (doy_sin, doy_cos)",0,69.9342,28.3078,14.6352,9.2951
+"day of year (doy_sin, doy_cos)",1,69.8307,28.2962,14.5317,9.2835
+"day of year (doy_sin, doy_cos)",2,69.6938,28.3065,14.3948,9.2938
+"day of year (doy_sin, doy_cos)",3,69.7803,28.3055,14.4813,9.2928
+"day of year (doy_sin, doy_cos)",4,69.9215,28.2633,14.6225,9.2506

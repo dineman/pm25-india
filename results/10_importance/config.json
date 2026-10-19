@@ -1,0 +1,61 @@
+{
+  "args": {
+    "data": "data/processed/eac4_india_3h.nc",
+    "split": "data/processed/splits/split_block5.nc",
+    "models_dir": "results/07_models/all",
+    "model": "lgbm",
+    "out_dir": "results/10_importance",
+    "shap_rows": "200000",
+    "perm_rows": "300000",
+    "n_repeats": "5",
+    "n_dependence": "6",
+    "seed": "42"
+  },
+  "features": [
+    "aod550",
+    "u10",
+    "v10",
+    "t2m",
+    "d2m",
+    "sp",
+    "lat",
+    "lon",
+    "wind_speed",
+    "rh2m",
+    "hour_sin",
+    "hour_cos",
+    "doy_sin",
+    "doy_cos"
+  ],
+  "groups": {
+    "aerosol (aod550)": [
+      "aod550"
+    ],
+    "wind (u10, v10, speed)": [
+      "u10",
+      "v10",
+      "wind_speed"
+    ],
+    "temperature & humidity (t2m, d2m, rh2m)": [
+      "t2m",
+      "d2m",
+      "rh2m"
+    ],
+    "surface pressure (sp)": [
+      "sp"
+    ],
+    "location (lat, lon)": [
+      "lat",
+      "lon"
+    ],
+    "hour of day (hour_sin, hour_cos)": [
+      "hour_sin",
+      "hour_cos"
+    ],
+    "day of year (doy_sin, doy_cos)": [
+      "doy_sin",
+      "doy_cos"
+    ]
+  },
+  "model_target": "log"
+}

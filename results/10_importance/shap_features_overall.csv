@@ -1,0 +1,15 @@
+,mean_abs_shap
+aod550,0.3538
+hour_cos,0.1829
+doy_cos,0.1641
+sp,0.1535
+lat,0.1223
+t2m,0.0847
+lon,0.0731
+d2m,0.07
+hour_sin,0.0695
+wind_speed,0.0553
+rh2m,0.0368
+doy_sin,0.03
+u10,0.0249
+v10,0.0231

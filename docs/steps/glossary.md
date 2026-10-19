@@ -165,5 +165,21 @@ topic; the step where a term first matters is in brackets.
   function. Needs features scaled to similar ranges.
 - **Early stopping** (07): stop training a neural network when the score on a
   held-out part stops improving, to avoid overfitting.
-- **Feature importance / SHAP** (10): ways to measure how much each feature
-  contributes to the predictions.
+
+## Feature importance (step 10)
+
+- **Feature importance** (10): how much a model relies on each feature.
+- **SHAP value** (10): for one prediction, the share contributed by one feature,
+  measured against the model's average prediction. A prediction's SHAP values
+  add up to the prediction minus the average. Comes from game theory (Shapley
+  values): a fair way of sharing a total among players.
+- **TreeSHAP** (10): an exact, fast way to compute SHAP values for tree models;
+  LightGBM has it built in (`pred_contrib=True`).
+- **Mean |SHAP|** (10): average size of a feature's contribution, ignoring sign;
+  the usual SHAP importance score. In log units here: 0.1 ≈ ±10% PM2.5.
+- **Permutation importance** (10): shuffle one feature's values between rows and
+  measure how much the error grows. Big growth = the accuracy depends on it.
+- **Grouped permutation** (10): shuffle related features together (e.g.
+  temperature, dewpoint, humidity), so they can't stand in for each other.
+- **Dependence curve** (10): average SHAP value of a feature plotted against its
+  value: shows *how* the feature acts (rising, falling, threshold).

@@ -37,7 +37,7 @@ flowchart LR
 | 07 | ML models (ridge, RF, LightGBM, MLP) | **Done**: LightGBM best (test R² 0.59; MLP 0.53 on the Mac re-run) | [07_models.md](07_models.md) | RQ1, RQ2, RQ5 |
 | 08 | Hybrid ML + residual kriging | **Done**: test R² 0.72 (vs 0.59 ML, 0.58 kriging) | [08_hybrid.md](08_hybrid.md) | RQ6 |
 | 09 | Evaluation (overall, region, season, hour) | **Done** (Mac): CV check on 27 blocks: hybrid R² 0.68, LightGBM 0.66, kriging 0.66; the big test gain (0.59 → 0.72) comes mostly from 2 of 6 blocks | [09_evaluation.md](09_evaluation.md) | RQ1, RQ2, RQ4, RQ5, RQ6 |
-| 10 | Feature importance | Not started | | RQ3 |
+| 10 | Feature importance | **Done** (Mac): AOD most used (mean \|SHAP\| 0.35), then hour, day of year, location, altitude; location matters most for test accuracy; wind least | [10_feature_importance.md](10_feature_importance.md) | RQ3 |
 | 11 | Maps | Not started | | RQ6 |
 | 12 | Write-up | Not started | | all |
 
