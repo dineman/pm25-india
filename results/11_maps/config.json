@@ -1,0 +1,23 @@
+{
+  "args": {
+    "data": "data/processed/eac4_india_3h.nc",
+    "split": "data/processed/splits/split_block5.nc",
+    "models_dir": "results/07_models/all",
+    "hybrid_dir": "results/08_hybrid",
+    "baselines_config": "results/06_baselines/config.json",
+    "model": "lgbm",
+    "factor": "3",
+    "out_dir": "results/11_maps",
+    "year": "2024",
+    "max_months": "None"
+  },
+  "n_fine_points": 4636,
+  "n_cells": 494,
+  "n_full_cells": 426,
+  "examples": {
+    "smog_igp": "2024-12-19 21:00:00",
+    "fire_northeast": "2024-03-14 21:00:00",
+    "monsoon_afternoon": "2024-07-26 09:00:00"
+  },
+  "boundary": "Natural Earth 10m admin_0_countries_ind (India point of view)"
+}

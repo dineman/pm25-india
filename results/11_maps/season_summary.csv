@@ -1,0 +1,5 @@
+season,time_steps,bilinear_mean,kriging_mean,lgbm_mean,hybrid_mean,mean_abs_hybrid_minus_bilinear,p95_abs_hybrid_minus_bilinear
+winter,2376,94.94,95.525,91.562,95.291,6.359,19.28
+pre_monsoon,3680,65.157,65.669,61.119,65.528,5.488,14.673
+monsoon,4880,44.346,44.627,42.559,44.319,2.231,6.313
+post_monsoon,3680,89.364,89.924,86.505,89.448,5.718,17.458

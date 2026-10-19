@@ -183,3 +183,17 @@ topic; the step where a term first matters is in brackets.
   temperature, dewpoint, humidity), so they can't stand in for each other.
 - **Dependence curve** (10): average SHAP value of a feature plotted against its
   value: shows *how* the feature acts (rising, falling, threshold).
+
+## Maps (step 11)
+
+- **Regridding** (11): moving a gridded field to another grid, e.g. from 0.75°
+  to 0.25°. Bilinear regridding blends the 4 surrounding values.
+- **Downscaling / spatial enhancement** (11): producing a finer map than the
+  input data. Statistical downscaling uses a model to add detail; without
+  fine-scale inputs or reference data the added detail can't be checked.
+- **Consistency check** (11): averaging a fine map back to the coarse grid and
+  comparing with the original coarse data. It tests faithfulness, not accuracy
+  at the fine scale.
+- **Point-of-view boundaries** (11): Natural Earth versions of country borders
+  as officially claimed by one country. The India version includes all of Jammu
+  & Kashmir and Ladakh (PoK, Gilgit-Baltistan, Aksai Chin).
