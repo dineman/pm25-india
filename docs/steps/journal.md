@@ -116,5 +116,6 @@ Session 25e49b66 (**first session on the Mac**; 2026-10-18 evening to 2026-10-19
 | 08:56 | `pandoc` 3.12 and `typst` 0.15 added to environment.yml and installed (no LaTeX on the Mac; typst is a light PDF engine). | environment.yml |
 | 08:58 | **Report converted**: `results/12_report/report.pdf` (13 pages, A4, typst) and `report.docx`. Pages rendered to PNG and checked: tables and figures fit; the long commands in the reproduction table wrap but stay readable. | results/12_report/ |
 | 08:58–09:05 | **Step 07 variants re-run on the Mac** (`brief`, `all_no_latlon`; `--cv-from` the tuned settings, as on Fedora). LightGBM, RF, ridge identical to Fedora to 2 decimals (LightGBM R² without lat/lon 0.475, brief 0.438); MLP brief 0.446 → 0.460, without lat/lon 0.403 → 0.405 (machine dependence, as before). Report numbers unchanged; 07 doc table updated. | train_models.log, 07_models.md |
+| 09:05 | **Commit 5dce58d pushed**: variant results, 07 doc, environment.yml, report PDF/DOCX. | git |
 
 **Still open (as of 09:07):** nothing from the pipeline. Report: wait for the user's review (length, required sections, course format).
