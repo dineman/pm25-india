@@ -98,5 +98,6 @@ Session 25e49b66 (**first session on the Mac**; 2026-10-18 evening to 2026-10-19
 | 07:55 | Step 10 SHAP done after ~15 min (200k rows × 1,000 trees; slower than the 2–4 min estimated). | feature_importance.log |
 | 08:00 | **Step 10 done.** Mean \|SHAP\| (log units): **AOD 0.35**, hour of day 0.22, day of year 0.17, location 0.17, surface pressure 0.15, temperature & humidity 0.15, **wind 0.08**. Permutation on test cells (ΔRMSE): **location 18.8**, day of year 14.5, hour 13.9, AOD 11.4 (largest ΔMAE 12.5), wind 5.5. Himalaya: AOD 0.77 + pressure 0.57 (altitude); pre-monsoon: weather explains least. Night ≈ +30%, noon ≈ −25% (boundary layer); cold raises PM2.5 only in winter/post-monsoon. | 10_feature_importance.md |
 | 08:01 | Docs: 10_feature_importance.md, glossary (SHAP, TreeSHAP, permutation importance, dependence curve), overview status. | docs/steps/ |
+| 08:02 | **Commit 8d0418d pushed**: step 10 code, tests, docs, results (CSV + figures). | git |
 
 **Still open (as of 08:01):** Kashmir boundary scope (maps only, or also the region mask); step 07 feature-set variants not re-run on the Mac; heatmap label contrast (step 10).
