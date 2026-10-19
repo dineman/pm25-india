@@ -107,5 +107,6 @@ Session 25e49b66 (**first session on the Mac**; 2026-10-18 evening to 2026-10-19
 | 08:23–08:35 | Re-run with a layout fix (panel title overlapped the figure title); numbers identical. | make_maps.log |
 | 08:37 | Check of a visual claim: in the north India zoom (winter), steepest 5% of gradients are 11–14% steeper in LightGBM/hybrid than bilinear (plain-to-Himalaya edge); average gradient the same. Doc states it as a modest effect. | 11_maps.md |
 | 08:38 | Docs: 11_maps.md, glossary (regridding, downscaling, consistency check, point-of-view boundaries), overview status. | docs/steps/ |
+| 08:36 | **Commit 66a38f0 pushed**: step 11 code, tests, docs, results (figures + CSV; `maps_0p25.nc` not in git). | git |
 
 **Still open (as of 08:38):** step 07 feature-set variants not re-run on the Mac; heatmap label contrast (step 10); fine points outside the model domain (PoK, Aksai Chin, excluded coasts) could be hatched in write-up figures (step 11).
