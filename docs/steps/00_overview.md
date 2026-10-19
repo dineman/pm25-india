@@ -39,7 +39,7 @@ flowchart LR
 | 09 | Evaluation (overall, region, season, hour) | **Done** (Mac): CV check on 27 blocks: hybrid R² 0.68, LightGBM 0.66, kriging 0.66; the big test gain (0.59 → 0.72) comes mostly from 2 of 6 blocks | [09_evaluation.md](09_evaluation.md) | RQ1, RQ2, RQ4, RQ5, RQ6 |
 | 10 | Feature importance | **Done** (Mac): AOD most used (mean \|SHAP\| 0.35), then hour, day of year, location, altitude; location matters most for test accuracy; wind least | [10_feature_importance.md](10_feature_importance.md) | RQ3 |
 | 11 | Maps | **Done** (Mac): 0.25° maps inside India's official boundary; hybrid stays faithful to CAMS (averaged back: R² 0.98, bilinear 0.985, LightGBM alone 0.84); adds modest detail at the Himalayan foothills, keeps a 0.75° imprint | [11_maps.md](11_maps.md) | RQ6 |
-| 12 | Write-up | Not started | | all |
+| 12 | Write-up | **Done** (draft): [report.md](../report.md); final figures rebuilt by `scripts/report_figures.py` (`results/12_report/`) | [../report.md](../report.md) | all |
 
 ## Research questions (from docs/PROJECT.md)
 

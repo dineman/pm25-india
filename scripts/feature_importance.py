@@ -142,7 +142,10 @@ def plot_heatmap(table: pd.DataFrame, path: Path, title: str) -> None:
         figsize=(1.3 * table.shape[1] + 4, 0.5 * table.shape[0] + 1.5)
     )
     im = ax.imshow(table.values, cmap=SEQUENTIAL, aspect="auto")
-    threshold = np.nanpercentile(table.values, 70)
+    # White text only on the dark part of the ramp (by position on the colour
+    # scale, not by percentile, so mid-blue cells keep dark text).
+    lo, hi = np.nanmin(table.values), np.nanmax(table.values)
+    threshold = lo + 0.55 * (hi - lo)
     for (r, c), v in np.ndenumerate(table.values):
         ax.text(
             c,

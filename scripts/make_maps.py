@@ -171,6 +171,21 @@ def edges(axis: np.ndarray) -> np.ndarray:
     return np.concatenate([axis - step / 2, [axis[-1] + step / 2]])
 
 
+def neighbour_outlines() -> list:
+    """Neighbouring countries (India point of view file), for drawing only."""
+    import cartopy.io.shapereader as shpreader
+
+    path = shpreader.natural_earth(
+        resolution="10m", category="cultural", name="admin_0_countries_ind"
+    )
+    frame = shapely.box(60, 0, 105, 45)
+    return [
+        r.geometry
+        for r in shpreader.Reader(path).records()
+        if r.attributes["ADM0_A3"] != "IND" and r.geometry.intersects(frame)
+    ]
+
+
 def draw_outlines(ax: plt.Axes, countries: list, india: shapely.Geometry) -> None:
     """Neighbouring countries in grey, India (official boundary) in dark ink."""
     for geom, color, lw in [(g, "#a8a79f", 0.5) for g in countries] + [
@@ -201,8 +216,13 @@ def plot_panels(
     title: str,
     extent: dict | None = None,
     diff_last: bool = False,
+    hatch: tuple[np.ndarray, np.ndarray, np.ndarray] | None = None,
 ) -> None:
-    """Grid of maps. Each panel: (title, lat edges, lon edges, values)."""
+    """Grid of maps. Each panel: (title, lat edges, lon edges, values).
+
+    ``hatch`` = (lat, lon, mask) on cell centres: hatch the area where mask is
+    True (e.g. outside the model domain) on every 0.25° panel.
+    """
     n_row, n_col = len(panels), len(panels[0])
     fig, axes = plt.subplots(
         n_row, n_col, figsize=(3.6 * n_col, 3.9 * n_row), squeeze=False
@@ -225,6 +245,15 @@ def plot_panels(
                 diff_im = im
             else:
                 pm_im = im
+            if hatch is not None and values.shape == hatch[2].shape:
+                ax.contourf(
+                    hatch[1],
+                    hatch[0],
+                    hatch[2].astype(float),
+                    levels=[0.5, 1.5],
+                    colors="none",
+                    hatches=["////"],
+                )
             draw_outlines(ax, *outlines)
             map_axes(ax, extent)
             if r == 0:
@@ -416,18 +445,7 @@ def main() -> None:
     logger.info("Seasonal India means (fine points):\n%s", summary.round(1).to_string())
 
     # --- Figures -----------------------------------------------------------------
-    import cartopy.io.shapereader as shpreader
-
-    path = shpreader.natural_earth(
-        resolution="10m", category="cultural", name="admin_0_countries_ind"
-    )
-    frame = shapely.box(60, 0, 105, 45)
-    countries = [
-        r.geometry
-        for r in shpreader.Reader(path).records()
-        if r.attributes["ADM0_A3"] != "IND" and r.geometry.intersects(frame)
-    ]
-    outlines = (countries, india)
+    outlines = (neighbour_outlines(), india)
     lat_e, lon_e = edges(fine_lat), edges(fine_lon)
     cams_lat, cams_lon = ds["lat"].values, ds["lon"].values
     cams_mask = points_inside(cams_lat, cams_lon, india)
