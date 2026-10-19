@@ -120,5 +120,7 @@ Session 25e49b66 (**first session on the Mac**; 2026-10-18 evening to 2026-10-19
 | ~09:08 | **User request: a beginner's booklet (PDF, book style)** listing all the work and explaining every Python file. | — |
 | 09:08–09:14 | **Booklet written** (`docs/booklet/`, 5 chapter files + the project glossary as the last chapter): Part I big picture (PM2.5, CAMS, ML, the questions, tools), Part II the 12 steps (what/why/how/found + figures), Part III the code (repo layout, all 14 library modules with real code excerpts, all 13 scripts, all 17 test files, record keeping), Part IV running it, 8 mistakes and lessons, limitations, glossary. `build.sh` builds the PDF (pandoc + typst; title page, contents, part pages, numbered chapters). **39 pages.** Pages rendered and checked: scripts table overflowed → turned into a list; long code lines wrapped → smaller code font. | docs/booklet/ |
 | 09:14 | **Commit b930660 pushed**: booklet chapters, build script, PDF. | git |
+| ~11:15 | User asked how to predict with new data; explained that the saved LightGBM model predicts from the 6 predictors and offered a `predict.py`. **Decision (user): skip it**, since the brief (docs/PROJECT.md) doesn't require it and limits the data to 2020–2024. | — |
+| 11:23 | Overview fixed: the Kashmir decision was still shown as open; it is **maps only**. **Commit 5ce17a8 pushed.** | docs/steps/00_overview.md |
 
-**Still open (as of 09:07):** nothing from the pipeline. Report: wait for the user's review (length, required sections, course format).
+**Still open (as of 11:23):** nothing from the pipeline. Report and booklet: wait for the user's review (length, required sections, course format).
